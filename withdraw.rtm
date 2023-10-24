@@ -1,0 +1,23 @@
+# manifest
+# Lock fees
+CALL_METHOD
+  Address("account_sim1c956qr3kxlgypxwst89j9yf24tjc7zxd4up38x37zr6q4jxdx9rhma")
+  "lock_fee"
+  Decimal("10");
+
+## Create a proof of a badge on your account. The "create_proof_of_amount" method returns a Proof to the authzone.
+CALL_METHOD
+    Address("account_sim1c956qr3kxlgypxwst89j9yf24tjc7zxd4up38x37zr6q4jxdx9rhma") #[your_account_address]
+    "create_proof_of_amount"
+    Address("resource_sim1th6n55rdkdxft6lsw8mv8f4rc4272vga3dt9knwshlkyw4mchlqhvr") #[badge_address]
+    Decimal("1");
+
+CALL_METHOD
+    Address("component_sim1cpfgw4w48953gt58a584lj0wqet300t8pautrfu09x7azvm7g2pc85") #Component
+    "withdraw_funds"
+    Decimal("10");
+
+CALL_METHOD
+    Address("account_sim1c956qr3kxlgypxwst89j9yf24tjc7zxd4up38x37zr6q4jxdx9rhma") #Component
+    "deposit_batch"
+    Expression("ENTIRE_WORKTOP");
